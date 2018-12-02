@@ -1,0 +1,2 @@
+module CloudfilesHelper
+end

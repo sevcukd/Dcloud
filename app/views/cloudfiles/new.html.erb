@@ -1,0 +1,14 @@
+<h1>Files#new</h1>
+<p>Find me in app/views/files/new.html.erb</p>
+
+<%= form_for @file, url: cloudfiles_path do |f| %>
+
+  Title: <%= f.text_field :name %><br />
+  Description: <%= f.text_field :description %><br />
+  
+  Photo: <%= f.file_field :ffile %><br />
+
+  <%= f.check_box :security %>
+
+  <%= f.submit "Create" %>
+<% end %>
