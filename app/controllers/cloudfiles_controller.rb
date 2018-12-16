@@ -1,5 +1,6 @@
 class CloudfilesController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
+	before_action :find_cloudfile, only: [:show, :edit]
   def index
   end
 
@@ -25,4 +26,7 @@ class CloudfilesController < ApplicationController
   def file_params
   	params.require(:cloudfile).permit(:user_id, :name, :description, :ffile, :security)
   end  
+    def find_cloudfile
+    @cloudfile = Cloudfile.find_by(id: params[:id])
+  end
 end

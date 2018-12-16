@@ -1,8 +1,15 @@
-<% if user_signed_in? %>
-  <%= link_to "Home", root_path %> |
-<%= link_to "add file", new_cloudfile_path %>  |
-
-  <%= link_to "Logout",  destroy_user_session_path, method: :delete %>
+    <% @cloudfiles.each do |p| %>
+       	<h1><%= p.name %></h1>
+       	<h3>Опис:</h3>
+       <b><%= p.description %></b><br>
+       <%= p.ffile %>
+       <% if p.user_id == current_user.id %>
+<p><%= link_to "edit", edit_cloudfile_path(p.id) %> |
+<%= link_to "delete", cloudfile_path(p.id), method: :delete %>|
+<%= link_to "download", root_path %></p>
 <% else %>
-   <%= link_to "Login", new_user_session_path %>
-<% end %>
+<p> <%= link_to "download", root_path %></p>
+       <hr>
+       <% end %>
+       <% end %>
+             

@@ -1,14 +1,16 @@
-<h1>Files#new</h1>
-<p>Find me in app/views/files/new.html.erb</p>
+
 
 <%= form_for @file, url: cloudfiles_path do |f| %>
 
-  Title: <%= f.text_field :name %><br />
-  Description: <%= f.text_field :description %><br />
+  Назва:<br>
+   <%= f.text_field :name %><br />
+  Опис:<br>
+   <%= f.text_field :description %><br />
   
-  Photo: <%= f.file_field :ffile %><br />
+  Виберіть файл який бажаєте завантажити: <%= f.file_field :ffile %><br />
 
-  <%= f.check_box :security %>
+   Приховати від інших користувачів?    
+   <%= f.check_box :security %><br>
 
-  <%= f.submit "Create" %>
+  <%= f.submit "Завантажити" %>
 <% end %>
