@@ -2,9 +2,12 @@ class CloudfilesController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
 	before_action :find_cloudfile, only: [:show, :edit]
   def index
-    
-  end
 
+        @q = Cloudfile.search(params[:q])
+        @cloudfiles =  @q.result(distinct: true)
+    
+     
+end
   def new
   	@file = Cloudfile.new
   end
