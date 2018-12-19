@@ -1,9 +1,10 @@
+<%= link_to "Home", root_path %> | 
 <% if user_signed_in? %>
-  <%= link_to "Back", root_path %> |
-  <% else %>
-   <%= link_to "Login", new_user_session_path %> |
-  <% end %>
-<%= link_to "add file", new_cloudfile_path %> |
-  
+  	<%= link_to "add file", new_cloudfile_path %> |
+  	<%= link_to "Logout",  destroy_user_session_path, method: :delete %> |                            
+
+  	  <%= current_user.email.split('@').first %> | <%= link_to "edit pass",  edit_user_registration_path  %>
 <% else %>
-  <%= link_to "Logout",  destroy_user_session_path, method: :delete %>
+   	<%= link_to "Login", new_user_session_path %> |
+<% end %>
+  

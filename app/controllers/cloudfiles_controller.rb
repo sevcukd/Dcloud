@@ -2,6 +2,7 @@ class CloudfilesController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
 	before_action :find_cloudfile, only: [:show, :edit]
   def index
+    
   end
 
   def new

@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'activeadmin'
 gem 'carrierwave', '~> 1.0'
+gem 'ransack'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

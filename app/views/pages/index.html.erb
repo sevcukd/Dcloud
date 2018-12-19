@@ -1,15 +1,15 @@
-    <% @cloudfiles.each do |p| %>
-       	<h1><%= p.name %></h1>
-       	<h3>Опис:</h3>
-       <b><%= p.description %></b><br>
-       <%= p.ffile %>
-       <% if p.user_id == current_user.id %>
-<p><%= link_to "edit", edit_cloudfile_path(p.id) %> |
-<%= link_to "delete", cloudfile_path(p.id), method: :delete %>|
-<%= link_to "download", root_path %></p>
-<% else %>
-<p> <%= link_to "download", root_path %></p>
-       <hr>
-       <% end %>
-       <% end %>
+
+<% @cloudfiles.each do |p| %>
+	<h1><%= p.name %></h1>
+    <h3>Опис:</h3>
+    <b><%= p.description %></b><br>
+<%= link_to "Download", p.ffile.url %>
+   	<% if p.user_id == current_user.id %>
+		<p><%= link_to "edit", edit_cloudfile_path(p.id) %> |
+		<%= link_to "delete", cloudfile_path(p.id), method: :delete %> |
+	<% else %>
+
+    <% end %>
+    <hr>
+<% end %>
              
