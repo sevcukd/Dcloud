@@ -4,17 +4,18 @@
   <%= f.submit %>
 <% end %>
 
-<% @cloudfiles.each do |p| %>
-	<h1><%= p.name %></h1>
-    <h3>Опис:</h3>
-    <b><%= p.description %></b><br>
-<%= link_to "Download", p.ffile.url %>
-   	<% if p.user_id == current_user.id %>
-		<p><%= link_to "edit", edit_cloudfile_path(p.id) %> |
-		<%= link_to "delete", cloudfile_path(p.id), method: :delete %> |
-	<% else %>
 
+<% if @cloudfiles == [] %>
+    <p>Жодного файлу не знайдено</p>
+<% else %>
+   <% @cloudfiles.each do |p| %>
+    <% if p.security == true && current_user.id != p.user_id %>
+    <% else %>
+    	<h1><%= link_to p.name, cloudfile_path(p.id) %></h1>
+   		<%= link_to "Завантажити", p.ffile.url %>
+   		<hr>
     <% end %>
-    <hr>
 <% end %>
+<% end %>
+
              

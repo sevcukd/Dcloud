@@ -1,6 +1,6 @@
 class CloudfilesController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
-	before_action :find_cloudfile, only: [:show, :edit]
+	before_action :find_cloudfile, only: [:show, :edit, :update, :destroy]
   def index
 
         @q = Cloudfile.search(params[:q])
@@ -24,6 +24,17 @@ end
   end
 
   def edit
+  end
+
+  def update
+    if @cloudfile.update(file_params)
+      redirect_to root_path
+    end
+  end
+
+  def destroy
+    @cloudfile.destroy
+    redirect_to root_path
   end
   private
   

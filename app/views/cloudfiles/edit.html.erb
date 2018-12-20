@@ -1,2 +1,13 @@
-<h1>Cloudfiles#edit</h1>
-<p>Find me in app/views/cloudfiles/edit.html.erb</p>
+<%= form_for @cloudfile, url: {action: "update"}  do |f| %>
+
+  Назва:<br>
+   <%= f.text_field :name %><br />
+  Опис:<br>
+   <%= f.text_field :description %><br />
+  
+
+   Приховати від інших користувачів?    
+   <%= f.check_box :security %><br>
+
+  <%= f.submit " Оновити" %>
+<% end %>

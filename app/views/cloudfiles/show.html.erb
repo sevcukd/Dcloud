@@ -1,3 +1,9 @@
-User: <%= @cloudfile.name %><br />
-Title: <%= @cloudfile.descriptions %><br />
-Body: <%= @cloudfile.ffile %><br />
+Назва файлу: <%= @cloudfile.name %><br />
+Опис: <%= @cloudfile.description %><br />
+   		<%= link_to "Завантажити", @cloudfile.ffile.url %> |
+
+	<% if @cloudfile.user_id == current_user.id %>
+		<%= link_to "Редагувати", edit_cloudfile_path(@cloudfile.id) %> |
+		<%= link_to "Видалити", cloudfile_path(@cloudfile.id), method: :delete %> |
+
+	<% end %>
