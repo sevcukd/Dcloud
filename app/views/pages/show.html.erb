@@ -12,7 +12,7 @@
     	<h1><%= link_to p.name, cloudfile_path(p.id) %></h1>
    		<%= link_to "Завантажити", p.ffile.url %><br>
    		<p><%= link_to "Редагувати", edit_cloudfile_path(p.id) %> |
-		<%= link_to "Видалити", cloudfile_path(p.id), method: :delete %> 
+		<%= link_to "Видалити", cloudfile_path(p.id), method: :delete, data: {confirm: "Ти впевнений?"}  %> 
    		<hr>
     <% end %>
 <% end %>

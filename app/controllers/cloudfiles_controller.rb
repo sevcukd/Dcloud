@@ -13,8 +13,10 @@ class CloudfilesController < ApplicationController
   def create
   	@file = current_user.cloudfiles.build(file_params)
   	if @file.save
+      flash[:notice] = "Файл успішно додано"
   		redirect_to root_path
   	else
+      flash[:allert] = "Щось пішло не так. Читай нижче"
   		render 'new'
   	end
   end

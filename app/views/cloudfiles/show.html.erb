@@ -4,6 +4,6 @@
 
 	<% if @cloudfile.user_id == current_user.id %>
 		<%= link_to "Редагувати", edit_cloudfile_path(@cloudfile.id) %> |
-		<%= link_to "Видалити", cloudfile_path(@cloudfile.id), method: :delete %> |
+		<%= link_to "Видалити", cloudfile_path(@cloudfile.id), method: :delete, data: {confirm: "Ти впевнений?"}  %> |
 
 	<% end %>

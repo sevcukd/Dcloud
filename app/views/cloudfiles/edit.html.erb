@@ -1,5 +1,17 @@
 <%= form_for @cloudfile, url: {action: "update"}  do |f| %>
 
+<% if @cloudfile.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@cloudfile.errors.count, "error") %> prohibited this cloudfile from being saved:</h2>
+ 
+    <ul>
+    <% @cloudfile.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
   Назва:<br>
    <%= f.text_field :name %><br />
   Опис:<br>
