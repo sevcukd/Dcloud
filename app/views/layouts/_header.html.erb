@@ -1,10 +1,11 @@
 <%= link_to "На головну", root_path %> | 
 <% if user_signed_in? %>
   	<%= link_to "Додати файл", new_cloudfile_path %> |
-  	<%= link_to "Вийти",  destroy_user_session_path, method: :delete %> |                            
-
-  	  <%= current_user.email.split('@').first %> | 
-  	  <%= link_to "Редагувати профіль",  edit_user_registration_path  %>
+  	<%= link_to "Вийти",  destroy_user_session_path, method: :delete %> |   
+  	 <%= link_to "Мої файли", page_path(current_user.id) %> |
+                    
+  	 <%= link_to "Редагувати профіль: ",  edit_user_registration_path  %>
+  	 <%= current_user.email.split('@').first %> 
 <% else %>
    	<%= link_to "Ввійти", new_user_session_path %> |
 <% end %>

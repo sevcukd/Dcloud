@@ -1,23 +1,21 @@
-
 <%= search_form_for @q do |f| %>
   <%= f.search_field :name_cont %>
   <%= f.submit "Знайти" %>
 <% end %>
 
-
 <% if @cloudfiles == [] %>
     <p>Жодного файлу не знайдено</p>
 <% else %>
    <% @cloudfiles.each do |p| %>
-    <% if p.security == true && current_user.id != p.user_id %>
-    <% else %>
+    <% if current_user.id == p.user_id %>
+    
     	<h1><%= link_to p.name, cloudfile_path(p.id) %></h1>
-    	<strong>Автор: <%= p.user.email.split('@').first %></strong>	 <br>
-   		<%= link_to "Завантажити", p.ffile.url %>
-
+   		<%= link_to "Завантажити", p.ffile.url %><br>
+   		<p><%= link_to "Редагувати", edit_cloudfile_path(p.id) %> |
+		<%= link_to "Видалити", cloudfile_path(p.id), method: :delete %> 
    		<hr>
     <% end %>
-   <% end %>
+<% end %>
 <% end %>
 
              

@@ -7,4 +7,9 @@ class PagesController < ApplicationController
   	@cloudfiles =  @q.result(distinct: true)
   	
   end
+    def show
+
+  	@q = Cloudfile.search(params[:q])
+  	@cloudfiles =  @q.result(distinct: true)
+  end
 end

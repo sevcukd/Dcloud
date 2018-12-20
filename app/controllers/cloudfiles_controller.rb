@@ -4,10 +4,9 @@ class CloudfilesController < ApplicationController
   def index
 
         @q = Cloudfile.search(params[:q])
-        @cloudfiles =  @q.result(distinct: true)
-    
-     
-end
+        @cloudfiles =  @q.result(distinct: true)    
+  end
+
   def new
   	@file = Cloudfile.new
   end
